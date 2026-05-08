@@ -20,7 +20,6 @@ for (let i = 0; i <= words.length - 1; i++) {
     }
 
     let key = wordArr.join("#");
-    console.log(key);
 
     if (groupObj[key]) {
         groupObj[key].push(word);
@@ -65,8 +64,20 @@ console.log();
 let firstWord = "abc";
 let secondWord = "ahbgdc";
 
+let i = 0;
+let j = 0;
 
+while (j < secondWord.length) {
+    if (firstWord[i] === secondWord[j]) i++;
 
+    j++;
+}
+
+if (i === firstWord.length) {
+    console.log("Subsequence");
+} else {
+    console.log("Not Subsequence");
+}
 
 console.log();
 console.log("Question - 34");
@@ -82,6 +93,28 @@ console.log();
 
 let roman = "MCMIV";
 
+let romanObj = {
+    I: 1,
+    V: 5,
+    X: 10,
+    L: 50,
+    C: 100,
+    D: 500,
+    M: 1000,
+};
+
+let total = 0;
+
+for (let i = 0; i < roman.length; i++) {
+    let currentRomanValue = romanObj[roman[i]];
+    let nextRomanValue = romanObj[roman[i + 1]];
+
+    if (currentRomanValue < nextRomanValue) total -= currentRomanValue;
+    else total += currentRomanValue;
+}
+
+console.log(total);
+
 console.log();
 console.log("Question - 36");
 // Find all substrings of a string.
@@ -89,12 +122,34 @@ console.log();
 
 let data = "abc";
 
+for (let i = 0; i < data.length; i++) {
+    for (let j = i + 1; j <= data.length; j++) {
+        console.log(data.slice(i, j));
+    }
+}
+
 console.log();
 console.log("Question - 37");
 // Find the longest common prefix from array.
 console.log();
 
 let arr = ["flower", "flow", "flight"];
+let ref = arr[0];
+let prefix = "";
+let isMatch = true;
+
+for (let i = 0; i < ref.length; i++) {
+    let char = ref[i];
+
+    for (let j = 1; j < arr.length; j++) {
+        if (arr[j][i] !== char) {
+            isMatch = false;
+            break;
+        }
+    }
+    isMatch ? (prefix += char) : "";
+}
+console.log(prefix);
 
 console.log();
 console.log("Question - 38");
@@ -102,6 +157,18 @@ console.log("Question - 38");
 console.log();
 
 let sentence = "javascript";
+let sentenceArr = new Array(128).fill(0);
+
+for (let i = 0; i < sentence.length; i++) {
+    let ascii = sentence.charCodeAt(i);
+
+    sentenceArr[ascii] += 1;
+}
+
+for (let i = 0; i < sentenceArr.length; i++) {
+    if (sentenceArr[i] === 0) continue;
+    else console.log(`${String.fromCharCode(i)} - ${sentenceArr[i]}`);
+}
 
 console.log();
 console.log("Question - 39");
