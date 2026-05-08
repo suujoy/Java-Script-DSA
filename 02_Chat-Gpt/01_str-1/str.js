@@ -1,152 +1,140 @@
-console.log("Level - Basic String DSA Questions");
+console.log();
+console.log("Question - 31");
+// Group anagrams together.
 console.log();
 
-console.log("Question - 01");
-console.log("Create a string and print its total length.");
-console.log();
+let words = ["eat", "tea", "tan", "ate", "nat", "bat"];
 
-let text = "JavaScript";
+let groupObj = {};
 
-console.log(text.length);
+for (let i = 0; i <= words.length - 1; i++) {
+    let word = words[i];
 
-console.log("Question - 02");
-console.log("Print the first and last character of a string.");
-console.log();
+    let wordArr = new Array(128).fill(0);
 
-let word = "Developer";
+    let arr = [];
 
-console.log(`1st Char = ${word[0]} & Last Char = ${word[word.length - 1]}`);
+    for (let i = 0; i < word.length; i++) {
+        let ascii = word.charCodeAt(i);
+        wordArr[ascii] += 1;
+    }
 
-console.log("Question - 03");
-console.log("Count total vowels in a string.");
-console.log();
+    let key = wordArr.join("#");
+    console.log(key);
 
-let sentence = "I am learning JavaScript";
-
-let vowelCount = 0;
-
-for (let i = 0; i <= sentence.length - 1; i++) {
-    if ("aeiouAEIOU".includes(sentence[i])) vowelCount++;
+    if (groupObj[key]) {
+        groupObj[key].push(word);
+    } else groupObj[key] = [word];
 }
 
-console.log(`Total vowel in this word is ${vowelCount}`);
+console.log(Object.values(groupObj));
 
-console.log("Question - 04");
-console.log("Check if a string is palindrome or not.");
+console.log();
+console.log("Question - 32");
+// Find the longest palindrome substring.
 console.log();
 
-let name = "amadama";
-let revName = "";
+let text = "babad";
 
-for (let i = name.length - 1; i >= 0; i--) {
-    revName += name[i];
+let longest = "";
+for (let i = 0; i < text.length; i++) {
+    for (let j = i + 1; j <= text.length; j++) {
+        let isPalindrome = true;
+        let word = text.slice(i, j);
+
+        let k = 0;
+        let l = word.length - 1;
+
+        while (k < l) {
+            if (word[k] !== word[l]) isPalindrome = false;
+
+            k++;
+            l--;
+        }
+
+        if (isPalindrome && word.length > longest.length) longest = word;
+    }
 }
-
-console.log(name === revName ? "Palindrome" : "Not Palindrome");
-
-let i = 0;
-let j = name.length - 1;
-let isPalindrome = true;
-
-while (i < j) {
-    if (name[i] !== name[j]) isPalindrome = false;
-    i++;
-    j--;
-}
-
-console.log(isPalindrome ? "Palindrome" : "Not Palindrome");
-
-console.log("Question - 05");
-console.log("Reverse a string.");
-console.log();
-
-let language = "Coding";
-
-let revStr = "";
-
-for (let i = language.length - 1; i >= 0; i--) {
-    revStr += language[i];
-}
-
-console.log(revStr);
-
-console.log("Question - 06");
-console.log("Convert all characters into uppercase.");
-console.log();
-
-let message = "hello world";
-let upperMessage = "";
-
-for (let i = 0; i < message.length; i++) {
-    upperMessage += message[i].toUpperCase();
-}
-console.log(upperMessage);
-
-console.log("Question - 07");
-console.log("Count total words in a sentence.");
-console.log();
-
-let line = "JavaScript is very interesting";
-console.log(line.length);
-
-
-
-
-console.log("Question - 08");
-console.log("Count how many times a character appears in a string.");
-console.log();
-
-let data = "banana";
-let target = "a";
-let targetCount = 0
-
-for(let i = 0;i<data.length;i++){
-    if(data[i]===target)targetCount++
-}
-
-console.log(`Totat ${target} Count is ${targetCount}`);
-
-console.log("Question - 09");
-console.log("Check if a word exists inside another string.");
-console.log();
-
-let paragraph = "I love web development";
-let searchWord = "web";
-let wordArr = paragraph.split(' ')
-
-for(let i = 0;i<= wordArr.length-1;i++){
-    if(searchWord===wordArr[i]) console.log(`${searchWord} is Exist in this ${i} index `);
-}
+console.log(longest);
 
 console.log();
-console.log("Question - 10");
-// Print all characters one by one from a string.
+console.log("Question - 33");
+// Check if one string is subsequence of another.
 console.log();
 
-let value = "Frontend";
+let firstWord = "abc";
+let secondWord = "ahbgdc";
 
-for (let i = 0;i<=value.length-1;i++){
-    console.log(value[i]);
-}
+
+
+
+console.log();
+console.log("Question - 34");
+// Find the minimum character to remove for palindrome.
+console.log();
+
+let value = "abcda";
+
+console.log();
+console.log("Question - 35");
+// Convert Roman number into integer.
+console.log();
+
+let roman = "MCMIV";
+
+console.log();
+console.log("Question - 36");
+// Find all substrings of a string.
+console.log();
+
+let data = "abc";
+
+console.log();
+console.log("Question - 37");
+// Find the longest common prefix from array.
+console.log();
+
+let arr = ["flower", "flow", "flight"];
+
+console.log();
+console.log("Question - 38");
+// Count frequency of every character.
+console.log();
+
+let sentence = "javascript";
+
+console.log();
+console.log("Question - 39");
+// Check if brackets are balanced or not.
+console.log();
+
+let brackets = "{[()]}";
+
+console.log();
+console.log("Question - 40");
+// Find the longest word without repeating characters.
+console.log();
+
+let language = "pwwkew";
 
 // Hints
 
-// Q1 - Use .length
+// Q31 - Use sorted word as key
 
-// Q2 - Use indexing
+// Q32 - Expand from center
 
-// Q3 - Use loop and condition
+// Q33 - Use two pointers
 
-// Q4 - Compare original and reversed string
+// Q34 - Compare palindrome possibilities
 
-// Q5 - Use loop or split reverse join
+// Q35 - Use object mapping
 
-// Q6 - Use toUpperCase()
+// Q36 - Use nested loop
 
-// Q7 - Use split(' ')
+// Q37 - Compare characters index wise
 
-// Q8 - Use loop and counter
+// Q38 - Use object counter
 
-// Q9 - Use includes()
+// Q39 - Use stack
 
-// Q10 - Use for loop
+// Q40 - Use sliding window
